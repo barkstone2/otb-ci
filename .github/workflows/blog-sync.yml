@@ -8,7 +8,7 @@ on:
 jobs:
   BuildAndSync:
     name: 빌드 및 동기화
-    if: github.event.pull_request == null
+    if: github.repository != 'barkstone2/otb-ci'
     runs-on: ubuntu-latest
     steps:
       - name: 리포지토리 체크아웃
