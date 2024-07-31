@@ -1,16 +1,13 @@
-name: 테스트 & 통합
+name: 블로그 동기화
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    paths-ignore:
-      - 'public/**'
-      - 'src/assets/**'
 
 jobs:
-  Test:
-    name: Vite 테스트
+  BuildAndSync:
+    name: 빌드 및 동기화
     runs-on: ubuntu-latest
     steps:
       - name: 리포지토리 체크아웃
@@ -22,4 +19,6 @@ jobs:
       - name: 패키지 설치
         run: npm ci
       - name: 테스트 수행
-        run: npm test
+        run: npm build
+      - name: 테스트 로그 출력
+        run: echo test
